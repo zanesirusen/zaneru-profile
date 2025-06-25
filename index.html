@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Profil resmi zaneru.id – Temukan informasi singkat, youtube, dan tautan sosial media dalam satu halaman." />
+  <meta name="keywords" content="zaneru.id, bio zaneru, profil online, link sosial zaneru, youtube zaneru, profil pribadi" />
+  <meta name="author" content="zaneru.id" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Profil zaneru.id" />
+  <meta property="og:description" content="Satu halaman ringkas berisi bio, kontak, dan akun sosial media milik zaneru.id." />
+  <meta property="og:image" content="https://zaneru-id.vercel.app/assets/images/static.png" />
+  <meta property="og:url" content="https://zaneru-id.vercel.app" />
+  <meta property="og:type" content="profile" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Profil zaneru.id" />
+  <meta name="twitter:description" content="Lihat bio lengkap zaneru.id: semua tautan penting dan info singkat dalam satu tempat." />
+  <meta name="twitter:image" content="https://zaneru-id.vercel.app/assets/images/static.png" />
+
+  <title>@zaneru.id</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/images/zane.ico" type="image/png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <video autoplay muted loop playsinline id="bgVideo" aria-hidden="true" tabindex="-1">
+    <source src="assets/videos/zenitsu-demon-slayer.1920x1080.mp4" type="video/mp4" />
+  </video>
+
+  <div id="overlay" aria-label="Welcome overlay" role="dialog" tabindex="0">
+    <button id="overlayButton" aria-label="Click to enter the site">Click here</button>
+  </div>
+
+  <canvas id="rain" aria-hidden="true"></canvas>
+
+  <div id="clock" class="clock" aria-live="polite"></div>
+
+  <div class="volume-control" aria-label="Volume control">
+    <button id="volumeButton" onclick="toggleMute()" aria-label="Toggle volume">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <input
+      type="range"
+      id="volumeSlider"
+      class="volume-slider"
+      min="0"
+      max="1"
+      step="0.01"
+      value="1"
+      aria-label="Manual volume control"
+    />
+  </div>
+
+  <main class="profile-container" role="main" aria-label="Bio Profile zaneru.id">
+    <img src="assets/images/zane.png" alt="Profile photo of @zaneru.id" class="profile-pic" />
+    <h1>zaneru.id</h1>
+    <p class="tagline" data-text="Website ini di buat atas kehendak allah dan ilmunya allah. aku ora iso opo opo"></p>
+
+    <nav class="links" aria-label="Social media links">
+      <a href="https://discord.gg/motionime" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://www.youtube.com/@zaneru-id" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://github.com/zaneru-id" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://open.spotify.com/playlist/0b01RsGC7FmRHYFE3n9moC" target="_blank" rel="noopener noreferrer" aria-label="spotify">
+        <i class="fab fa-spotify"></i>
+      </a>
+    </nav>
+
+    <section class="music-player" aria-label="Music player controls">
+      <span id="current-time" aria-live="polite">0:00</span>
+      <div
+        class="progress-bar"
+        onclick="seekAudio(event)"
+        role="slider"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        tabindex="0"
+        aria-label="Audio progress bar"
+      >
+        <div id="progress" class="progress"></div>
+      </div>
+      <span id="duration">0:00</span>
+      <div class="controls">
+        <button onclick="prevAudio()" aria-label="Previous song">
+          <i class="fa-solid fa-backward"></i>
+        </button>
+        <button id="togglePlayPause" onclick="togglePlayPause()" aria-label="Play / Pause">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <button onclick="nextAudio()" aria-label="Next song">
+          <i class="fa-solid fa-forward"></i>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© All Rights Reserved 2025 | zaneru.id</p>
+  </footer>
+
+  <audio id="audio" src="assets/audios/audio1.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+  <script src="rain.js"></script>
+
+  <script>
+    const baseTitle = "@zaneru.id";
+    let pos = 0;
+    const spacer = "   ";
+    const fullText = baseTitle + spacer;
+
+    function scrollTitle() {
+      let displayText = fullText.substring(pos) + fullText.substring(0, pos);
+      document.title = displayText;
+      pos = (pos + 1) % fullText.length;
+    }
+
+    setInterval(scrollTitle, 200);
+  </script>
+</body>
+</html>
